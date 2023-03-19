@@ -11,7 +11,3 @@ class BlogPost(db.Model, Serialiser):
 
     def __repr__(self) -> str:
         return  "User with user_id %s" % str(self.id)
-
-    def serialise(self):
-        d = Serialiser.serialise(self)
-        return d
