@@ -14,15 +14,19 @@ services:
       context: .
     ports:
     # Host:Container
-      - "8080:5000"
+      - "80:5000"
     environment:
+      - FLASK_APP=/app/app.py
+      - FLASK_ENV=development
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - PYTHONUNBUFFERED=1
     depends_on:
       - db
     volumes:
       - "./flask_web_app:/app"
+      - "./migrations:/migrations"
 volumes:
   flask_postgresql_vol:
     external: true

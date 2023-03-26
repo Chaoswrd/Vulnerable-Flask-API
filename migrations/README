@@ -1,0 +1,11 @@
+Single-database configuration for Flask.
+
+# How to run
+Log in to the flask docker container with the following command
+```bash
+docker compose exec flask bash
+```
+Then run the flask db commands from /.
+```bash
+flask db migrate -m "msg"; flask db upgrade
+```

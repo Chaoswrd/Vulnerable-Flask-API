@@ -2,3 +2,4 @@ Flask
 Jinja2 
 Flask-SQLAlchemy 
 psycopg2
+Flask-Migrate

@@ -1,14 +1,15 @@
 from flask import Flask, jsonify
-from models.user_model import User
-from Shared.supermodel import db
-from Utils.util import log_to_stdout
-from blueprints.sql_injection import simple_page
+from models.user import User
+from Shared.supermodel import db, migrate
+from blueprints.sql_injection_endpoint import sql_injection_endpoint
 
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@db:5432/postgres"
 db.init_app(app) 
-app.register_blueprint(simple_page)
+migrate.init_app(app, db)
+app.register_blueprint(sql_injection_endpoint, url_prefix='/sqlinjection')
+
 
 @app.route('/')
 def index():
