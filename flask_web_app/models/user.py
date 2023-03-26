@@ -1,6 +1,6 @@
 from datetime import datetime
-from Shared.supermodel import db
-from Shared.serialiser import Serialiser
+from shared.supermodel import db
+from shared.serialiser import Serialiser
 
 class User(db.Model, Serialiser):
     id = db.Column(db.Integer, primary_key=True)

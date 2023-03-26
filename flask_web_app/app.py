@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from models.user import User
-from Shared.supermodel import db, migrate
+from shared.supermodel import db, migrate
 from blueprints.sql_injection_endpoint import sql_injection_endpoint
 
 

@@ -1,6 +1,6 @@
 from flask import Blueprint
 from sqlalchemy.sql import text
-from Shared.supermodel import db
+from shared.supermodel import db
 
 sql_injection_endpoint = Blueprint('SQL_injection_page', __name__,
                         template_folder='templates')
