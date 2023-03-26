@@ -1,4 +1,28 @@
 services:
+  grafana:
+    image: grafana/grafana-oss
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  statsd-exporter:
+    image: prom/statsd-exporter
+    ports:
+      - "9102:9102"
+    command:
+      - '--statsd.mapping-config=/statsd/statsd.conf'
+    volumes:
+      - ./statsd-exporter/statsd.conf:/statsd/statsd.conf
   db:
     image: postgres
     volumes:
