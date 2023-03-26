@@ -7,6 +7,18 @@ The project runs in docker so it isn't exposed through any ports and so it is cr
 ## Dependencies
 - Docker
 - Python3
+- gitleaks
+- pre-commit
 
 ## Future Additions
 - Kubernetes
+
+# Security
+Using GitLeaks and pre-commit to ensure that no private information is leaked
+```bash
+gitleaks detect --source . -v
+```
+Run the pre-commits commands
+```bash
+pre-commit autoupdate && pre-commit install
+```
